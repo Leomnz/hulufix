@@ -1,0 +1,24 @@
+body {
+    margin-top: 2px;
+    background-color: #151515;
+    font-family: sans-serif;
+    width: 200px;
+    color: #1CE783
+}
+
+header {
+    border-bottom: 2px solid rgb(238, 238, 238);
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    max-height: 35px;
+    max-width: 35px;
+}

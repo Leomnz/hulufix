@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "HuluFix",
+  "version": "1.0",
+
+  "description": "Fixes hardware media controls on hulu.",
+
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/icon-48.png",
+    "default_title": "HuluFix",
+    "default_popup": "popup/index.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.hulu.com/*"],
+      "js": ["main.js"]
+    }
+  ]
+}
