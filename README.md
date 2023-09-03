@@ -3,6 +3,3 @@ Firefox extension to fix hardware media controls on Hulu. When clicking the medi
 
 # Get the Extension
 [Click to go to the Firefox Add-Ons Store!](https://www.google.com](https://addons.mozilla.org/en-US/firefox/addon/tineye-reverse-image-search/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=featured)https://addons.mozilla.org/en-US/firefox/addon/tineye-reverse-image-search/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=featured)
-
-# Authors
-This Firefox extension was made by Leo Adams and John Stromberg
