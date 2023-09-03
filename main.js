@@ -4,6 +4,43 @@ console.log("HuluFix: Script Running");
 const uiElems = [0,1,2,3,7]
 let controls = [];
 
+function startTriggers(){
+    try {
+        let video = document.getElementById("content-video-player");
+        // console.log("HuluFix: video: "+video);
+        video.addEventListener("play",ensurePlaying); // fix ui when play button is pressed
+        video.addEventListener("pause",ensurePaused); // fix ui when pause button is pressed
+
+        let player = document.getElementById("__player__");
+        controls = document.getElementsByClassName("ControlsContainer__transition"); // populate controls with all player ui elements
+
+        // permanently remove one of the next episode buttons that shows at the end of episodes
+        controls[5].style.visibility = "hidden";
+        controls[5].style.position = "relative";
+        controls[5].style.opacity = "0";
+        controls[5].style.width = "0px";
+        controls[5].style.height = "0px";
+
+
+        // add and remove ui when mouse in and out
+        player.addEventListener("mouseenter",addUI)
+        player.addEventListener("mouseleave",removeUI)
+    } catch (error){
+        console.error(error);
+    }
+}
+
+//waits until that the video player actually exists
+const checkExist = setInterval(function () {
+    //check every second for the video player to start
+    if (document.getElementById("content-video-player")) {
+        startTriggers();
+        clearInterval(checkExist);
+    }
+}, 1000);
+
+
+
 //This function hides the UI elements specified in uiElems
 function removeUI() {
     try {
@@ -57,34 +94,3 @@ function ensurePaused() {
         console.error(error);
     }
 }
-
-function startTriggers(){
-    try {
-        let video = document.getElementById("content-video-player");
-        // console.log("HuluFix: video: "+video);
-        video.addEventListener("play",ensurePlaying);
-        video.addEventListener("pause",ensurePaused);
-
-        let player = document.getElementById("__player__");
-        controls = document.getElementsByClassName("ControlsContainer__transition");
-
-        // perma remove next episode button at the end of episodes
-        controls[5].style.visibility = "hidden";
-        controls[5].style.position = "relative";
-        controls[5].style.opacity = "0";
-        controls[5].style.width = "0px";
-        controls[5].style.height = "0px";
-
-        player.addEventListener("mouseenter",addUI)
-        player.addEventListener("mouseleave",removeUI)
-    } catch (error){
-        console.error(error);
-    }
-}
-
-const checkExist = setInterval(function () {
-    if (document.getElementById("content-video-player")) {
-        startTriggers();
-        clearInterval(checkExist);
-    }
-}, 1000);

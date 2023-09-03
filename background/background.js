@@ -15,9 +15,9 @@ async function requestPermissions(){
     console.log(`Current permissions:`, background);
 };
 
-document.getElementById("permission_button").addEventListener("click", requestPermissions)
+document.getElementById("permission_button").addEventListener("click", requestPermissions) // await permission button click
 
-browser.runtime.onInstalled.addListener(async () => {
+browser.runtime.onInstalled.addListener(async () => { // on installation open background page
     browser.tabs.create({
         url: browser.runtime.getURL("background/background.html")
     });
