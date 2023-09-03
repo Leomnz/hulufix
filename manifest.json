@@ -11,7 +11,7 @@
   },
 
   "permissions": [
-    "webRequest"
+    "tabs"
   ],
 
   "host_permissions": [
@@ -36,7 +36,7 @@
   ],
 
   "background": {
-    "page": "background.html"
+    "page": "background/background.html"
   },
 
   "browser_specific_settings": {
