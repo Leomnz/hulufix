@@ -1,28 +1,10 @@
-// <div data-testid="playButton" style="touch-action: none;" tabindex="0" role="button" aria-label="" data-hotkeys="Space,Enter" class="PlayerButton PlayerControlsButton PlaybackControls__item PlayButton"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="SvgIcon"><path d="M4.245 2.563a.5.5 0 00-.745.435v18.004a.5.5 0 00.745.435l15.997-9.001a.5.5 0 000-.872L4.245 2.563z" fill="#FFF" stroke="#FFF" fill-rule="evenodd"></path></svg></div>
-// MediaPlayPause
-//<video id="content-video-player" class="ContentPlayer__videoPlayer ContentPlayer__item--stretched" style="width: 59.8148%; height: 100%;" src="blob:https://www.hulu.com/be468da9-6814-4239-8736-04df420d26d6"></video>
-
-//position: relative; visibility: hidden; opacity: 0; width: 0px; height: 0px
-//position: static; visibility: visible; opacity: 1;
-
-
-//Events
-//pointerout { target: div.PlaybackTouchControls__rewind, buttons: 0, clientX: -1, clientY: 371, layerX: -1, layerY: 371 }
-//mouseout { target: div.PlaybackTouchControls__rewind, buttons: 0, clientX: -1, clientY: 371, layerX: -1, layerY: 371 }
 console.log("HuluFix: Script Running");
 
-
-
-
-// Include:
-// 0, Top Gradient
-// 1, ton of stuff
-// 2,
-// 3, up next
-// 7
+// List of UI elements to include when we remove them and add them back to the screen
 const uiElems = [0,1,2,3,7]
 let controls = [];
 
+//This function hides the UI elements specified in uiElems
 function removeUI() {
     try {
         for(let i = 0;i<uiElems.length;i++) {
@@ -39,6 +21,7 @@ function removeUI() {
     }
 }
 
+//This function makes the UI elements in uiElems reappear
 function addUI() {
     try {
         for(let i = 0;i<uiElems.length;i++) {
@@ -55,21 +38,17 @@ function addUI() {
     }
 }
 
-
-
+//Ensures that the video is playing, called when a hardware media key is used to play the video
 function ensurePlaying() {
     try {
         let play_button = document.getElementsByClassName("PlayButton")[0];
         play_button.click();
-        // document.documentElement.dispatchEvent(new MouseEvent("mouseleave"));
-        // document.documentElement.dispatchEvent(new MouseEvent("mouseout",{}));
-        // console.log("HuluFix: Sending mouseleave")
     } catch(error) {
         console.error(error);
     }
 }
 
-
+//Ensures that the video is paused and isn't going to start playing again in a couple of seconds
 function ensurePaused() {
     try {
         let pause_button = document.getElementsByClassName("PauseButton")[0];
